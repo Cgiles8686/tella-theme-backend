@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 import dotenv from 'dotenv';
 import fs from 'fs';
 
@@ -13,8 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // OpenAI setup
-const configuration = new Configuration({ apiKey: process.env.OPENAI_API_KEY });
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // POST /generate-theme
 app.post('/generate-theme', async (req, res) => {
